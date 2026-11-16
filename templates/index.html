@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseMonitor // Python Uptime Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-zinc-50 text-zinc-900 font-sans min-h-screen">
+    <header
+      class="bg-white border-b border-zinc-200 px-8 py-4 flex items-center justify-between sticky top-0 z-30"
+    >
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center font-mono text-xs font-bold"
+        >
+          PM
+        </div>
+        <div>
+          <h1 class="text-sm font-bold tracking-tight uppercase">
+            PulseMonitor // HTTP Status Engine
+          </h1>
+          <p class="text-[11px] text-zinc-500 font-mono">
+            PURE PYTHON STDLIB WEB APPLICATION
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="refreshChecks()"
+        id="refresh-btn"
+        class="bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
+      >
+        Run Live Probes
+      </button>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-8 space-y-6">
+      <!-- KPI Row -->
+      <section
+        id="kpi-grid"
+        class="grid grid-cols-2 md:grid-cols-4 gap-4"
+      ></section>
+
+      <!-- Add Endpoint Form -->
+      <form
+        onsubmit="handleAdd(event)"
+        class="bg-white border border-zinc-200 rounded-xl p-4 flex flex-col md:flex-row gap-3"
+      >
+        <input
+          id="srv-name"
+          required
+          placeholder="Service Name (e.g., Payment API)"
+          class="flex-1 bg-zinc-50 border border-zinc-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-zinc-900"
+        />
+        <input
+          id="srv-url"
+          type="url"
+          required
+          placeholder="https://example.com"
+          class="flex-1 bg-zinc-50 border border-zinc-200 rounded-lg px-3 py-2 text-xs font-mono focus:outline-none focus:border-zinc-900"
+        />
+        <select
+          id="srv-cat"
+          class="bg-zinc-50 border border-zinc-200 rounded-lg px-3 py-2 text-xs focus:outline-none"
+        >
+          <option value="Security">Security</option>
+          <option value="Infrastructure">Infrastructure</option>
+          <option value="Payments">Payments</option>
+          <option value="Frontend">Frontend</option>
+        </select>
+        <button
+          type="submit"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-5 py-2 rounded-lg transition-colors"
+        >
+          + Add Target
+        </button>
+      </form>
+
+      <!-- Services Table -->
+      <div
+        class="bg-white border border-zinc-200 rounded-xl overflow-hidden shadow-sm"
+      >
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr
+              class="bg-zinc-100 border-b border-zinc-200 text-[11px] font-mono uppercase text-zinc-600"
+            >
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4">Service Name</th>
+              <th class="py-3 px-4">Endpoint URL</th>
+              <th class="py-3 px-4">Latency</th>
+              <th class="py-3 px-4">Last Checked</th>
+              <th class="py-3 px-4 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody
+            id="services-body"
+            class="divide-y divide-zinc-200 text-xs"
+          ></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
