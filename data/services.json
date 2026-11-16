@@ -1,0 +1,29 @@
+[
+  {
+    "id": "srv-1",
+    "name": "Core Auth Gateway",
+    "url": "https://httpbin.org/status/200",
+    "category": "Security",
+    "status": "UP",
+    "latency_ms": 112,
+    "last_checked": "2026-11-16 17:30:00"
+  },
+  {
+    "id": "srv-2",
+    "name": "Telemetry Ingestion API",
+    "url": "https://httpbin.org/delay/1",
+    "category": "Infrastructure",
+    "status": "DEGRADED",
+    "latency_ms": 1045,
+    "last_checked": "2026-11-16 17:30:00"
+  },
+  {
+    "id": "srv-3",
+    "name": "Legacy Billing Worker",
+    "url": "https://httpbin.org/status/503",
+    "category": "Payments",
+    "status": "DOWN",
+    "latency_ms": 0,
+    "last_checked": "2026-11-16 17:30:00"
+  }
+]
